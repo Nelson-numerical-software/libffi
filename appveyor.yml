@@ -1,0 +1,36 @@
+version: 3.2.1.{build}
+image: Visual Studio 2017
+
+environment:
+  VS_VERSION: vs2017
+  BUILD_CHAIN_DIR: c:\build_chain\libffi
+
+branches:
+  only:
+    - master
+
+platform:
+- x86
+- x64
+
+matrix:
+  allow_failures:
+    - platform: x86
+
+install:
+- SET PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\;%PATH%
+- call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %platform%
+
+build_script:
+- cd "c:\build_chain\libffi"
+- msbuild libffi.sln /p:Configuration=Release /p:Platform=%platform% /target:"libffi"  /m:4 
+
+
+notifications:
+- provider: Email
+  to:
+  - nelson.numerical.computation@gmail.com
+
+# clone directory
+clone_folder: c:\build_chain\libffi
+
