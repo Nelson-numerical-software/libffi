@@ -1,8 +1,8 @@
 version: 3.2.1.{build}
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 environment:
-  VS_VERSION: vs2017
+  VS_VERSION: vs2019
   BUILD_CHAIN_DIR: c:\build_chain\libffi
 
 branches:
@@ -18,8 +18,8 @@ matrix:
     - platform: x86
 
 install:
-- SET PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\;%PATH%
-- call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %platform%
+- SET PATH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\15.0\Bin\;%PATH%
+- call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %platform%
 
 build_script:
 - cd "c:\build_chain\libffi"
