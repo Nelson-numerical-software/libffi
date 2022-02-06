@@ -2,7 +2,7 @@
 
 libffi Windows repository, used by Nelson builds
 
-Visual Studio solution 2019
+Visual Studio solution 2022
 
 ## Building
 
